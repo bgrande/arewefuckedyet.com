@@ -17,6 +17,7 @@ cp index.html doomsday.json dist/
 
 # some adjustments if necessary
 sed -i ":a;N;\$!ba;s/$DEV_LOG_PATH/$LOG_PATH/g" dist/index.html
+sed -i ":a;N;\$!ba;s/$DEV_JSON_PATH/$JSON_PATH/g" dist/index.html
 #cp -r service dist/
 #rm dist/service/composer*
 #rm -rf dist/service/data/usage/*
