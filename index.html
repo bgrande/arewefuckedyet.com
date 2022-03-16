@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://arewefuckedyet.com">
+    <title>Are we fucked yet? Find the answer here!</title>
+
+    <meta name="description" content="A dark view on current world politics and climate change">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="https://twitter.com/arewefuckedyet">
+    <meta name="twitter:url" content="https://arewefuckedyet.com">
+    <meta name="twitter:title" content="Are we fucked yet? We're working on it!">
+    <meta name="twitter:description" content="A dark view on current world politics and climate change">
+    <meta name="twitter:image" content="https://arewefuckedyet.com/img/social.png">
+
+    <meta property="og:title" content="Are we fucked yet? We're working on it!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://arewefuckedyet.com/img/social.png">
+    <meta property="og:url" content="https://arewefuckedyet.com">
+    <meta property="og:description" content="A dark view on current world politics and climate change">
+
+    <link href="tailwind.css" rel="stylesheet" media="all">
+</head>
+<body>
+<div class="" title="doomsday clock">
+    <svg viewBox='-50 -50 100 100' width="100" height="100" title="doomsday clock">
+        <circle class='clock-face' r='48' fill="#fff" />
+
+        <!-- markers -->
+        <line stroke="#000"
+                class='minor'
+                y1='42'
+                y2='45'
+              transform="rotate(180)"
+        />
+
+        <line stroke="#000"
+                class='minor'
+                y1='42'
+                y2='45'
+              transform="rotate(150)"
+        />
+
+        <line stroke="#000"
+                class='minor'
+                y1='42'
+                y2='45'
+              transform="rotate(-150)"
+        />
+
+        <line stroke="#000"
+                class='minor'
+                y1='42'
+                y2='45'
+              transform="rotate(120)"
+        />
+
+        <line stroke="#000"
+                class='minor'
+                y1='42'
+                y2='45'
+              transform="rotate(-120)"
+        />
+
+        <line stroke="#000"
+              class='minor'
+              y1='42'
+              y2='45'
+              transform="rotate(90)"
+        />
+
+        <line stroke="#000"
+              class='minor'
+              y1='42'
+              y2='45'
+              transform="rotate(60)"
+        />
+
+        <line stroke="#000"
+              class='minor'
+              y1='42'
+              y2='45'
+              transform="rotate(-60)"
+        />
+
+        <line stroke="#000"
+              class='minor'
+              y1='42'
+              y2='45'
+              transform="rotate(30)"
+        />
+
+        <line stroke="#000"
+              class='minor'
+              y1='42'
+              y2='45'
+              transform="rotate(-30)"
+        />
+
+        <line stroke="#000"
+              class='minor'
+              y1='42'
+              y2='45'
+              transform="rotate(-90)"
+        />
+
+        <line stroke="#000"
+              class='minor'
+              y1='42'
+              y2='45'
+        />
+
+        <!-- hour hand -->
+        <line stroke="darkred"
+                stroke-width="2"
+                class='hour'
+                y1='3'
+                y2='-20'
+        />
+
+        <!-- minute hand -->
+        <line stroke="red"
+                class='minute'
+              stroke-width="1"
+                y1='4'
+                y2='-39'
+                transform="rotate(-2)"
+        />
+
+        <!-- second hand -->
+        <g>
+            <line class='second' y1='10' y2='-38' fill="#000"/>
+            <line class='second-counterweight' y1='10' y2='2'/>
+        </g>
+    </svg>
+</div>
+<header class="hero min-h-screen">
+    <div class="flex-col hero-content lg:flex-row-reverse">
+        <div class="">
+            <div class="text-center">
+                <h1 class="text-9xl font-bold">
+                    NOT <br>&nbsp;&nbsp;&nbsp;&nbsp;YET
+                </h1>
+                <p class="mt-16 mb-5 text-4xl">
+                    <span class="font-bold">But</span> we're <span class="font-bold">actively</span> working on it!
+                </p>
+                <p class="mt-16">
+                    <a class="btn btn-primary" href="#more" title="Read more">Read more!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="flex flex-col lg:flex-row min-h-full" id="more">
+</main>
+
+<script type="application/javascript">
+    /*
+    fetch('https://thebulletin.org/doomsday-clock/', {
+        method: 'GET',
+        redirect: 'follow',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'text/html',
+            'Access-Control-Request-Method:': 'GET, HEAD',
+            //'Access-Control-Allow-Origin': "https://thebulletin.org"
+        }
+    }).then(function (data) {
+        const dummyHtml = document.createElement('html');
+        dummyHtml.innerHtml = data;
+
+        const raw = dummyHtml.querySelector(".fl-heading-text")[0].textContent;
+
+        const {groups: parsed} = raw.match(/IT IS(?: STILL)? (?<time>\d+)(?: AND A (?<half>HALF))? (?<type>MINUTES|SECONDS) TO MIDNIGHT/)
+        const seconds = parsed.type === "SECONDS" ? Number(parsed.time) : (Number(parsed.time) * 60) + (parsed.half ? 30 : 0)
+        console.log(seconds);
+    }).catch(function (err) {
+        console.log(err);
+    })
+    ;
+     */
+</script>
+<!--
+<script src="https://arewefuckedyet.com/service/logjs.php" async>
+-->
+
+</body>
+</html>
+
