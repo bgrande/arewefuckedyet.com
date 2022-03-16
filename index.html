@@ -158,33 +158,23 @@
 </main>
 
 <script type="application/javascript">
-    /*
-    fetch('https://thebulletin.org/doomsday-clock/', {
+    fetch('https://www.arewefuckedyet.com/doomsday.json', {
         method: 'GET',
         redirect: 'follow',
         mode: 'cors',
         headers: {
-            'Content-Type': 'text/html',
-            'Access-Control-Request-Method:': 'GET, HEAD',
-            //'Access-Control-Allow-Origin': "https://thebulletin.org"
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Method': 'GET, HEAD'
         }
-    }).then(function (data) {
-        const dummyHtml = document.createElement('html');
-        dummyHtml.innerHtml = data;
-
-        const raw = dummyHtml.querySelector(".fl-heading-text")[0].textContent;
-
-        const {groups: parsed} = raw.match(/IT IS(?: STILL)? (?<time>\d+)(?: AND A (?<half>HALF))? (?<type>MINUTES|SECONDS) TO MIDNIGHT/)
-        const seconds = parsed.type === "SECONDS" ? Number(parsed.time) : (Number(parsed.time) * 60) + (parsed.half ? 30 : 0)
-        console.log(seconds);
+    }).then(async function (data) {
+        console.log(await data.json());
     }).catch(function (err) {
         console.log(err);
     })
     ;
-     */
 </script>
 <!--
-<script src="https://arewefuckedyet.com/service/logjs.php" async>
+<script src="http://0.0.0.0:3000/logjs.php" async>
 -->
 
 </body>
