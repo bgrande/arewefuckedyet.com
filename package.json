@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+  },
+  "deprecated": false,
+  "description": "simple page with satirical message",
+  "devDependencies": {
+    "tailwindcss": "^3.0.23",
+    "daisyui": "^2.8.0",
+    "@tailwindcss/typography": "^0.5.2"
+  },
+  "files": [
+    "src/*.js",
+    "dist/"
+  ],
+  "homepage": "https://github.com/bgrande/arewefuckeyet.com",
+  "license": "MIT",
+  "main": "src/index.js",
+  "name": "arewefuckedyet",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgrande/arewefuckedyet.git"
+  },
+  "scripts": {
+    "build": "./build.sh",
+    "dev": "npx tailwindcss -w -o tailwind.css"
+  },
+  "version": "0.1.0"
+}
