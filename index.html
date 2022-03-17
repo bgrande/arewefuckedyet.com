@@ -260,7 +260,7 @@
 
 
 
-    fetch('https://www.arewefuckedyet.com/doomsday.json', {
+    fetch('https://www.arewefuckedyet.com/doomsday.json'/*, {
         method: 'GET',
         redirect: 'follow',
         mode: 'cors',
@@ -268,7 +268,7 @@
             'Content-Type': 'application/json',
             'Access-Control-Request-Method': 'GET'
         }
-    }).then(async function (data) {
+    }*/).then(async function (data) {
         const jsonData = await data.json()
 
         const headingElement = document.getElementById('heading');
