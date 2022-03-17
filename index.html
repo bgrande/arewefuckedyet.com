@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="night">
+<html lang="en" data-theme="lightest">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -123,10 +123,10 @@
         <!-- minute hand -->
         <line stroke="red"
                 class='minute'
-              stroke-width="1"
+                stroke-width="1"
                 y1='4'
                 y2='-39'
-                transform="rotate(-2)"
+                transform="rotate(1)"
         />
 
         <!-- second hand -->
@@ -140,11 +140,11 @@
     <div class="flex-col hero-content lg:flex-row-reverse">
         <div class="">
             <div class="text-center">
-                <h1 class="text-9xl font-bold">
-                    NOT <br>&nbsp;&nbsp;&nbsp;&nbsp;YET
+                <h1 class="text-9xl font-bold" id="heading">
+                    I honestly don't know
                 </h1>
-                <p class="mt-16 mb-5 text-4xl">
-                    <span class="font-bold">But</span> we're <span class="font-bold">actively</span> working on it!
+                <p class="mt-16 mb-5 text-4xl" id="subtext">
+                    There's <b>certainly</b> someone out there doing something <b>stupid</b>!
                 </p>
                 <p class="mt-16">
                     <a class="btn btn-primary" href="#more" title="Read more">Read more!</a>
@@ -158,6 +158,108 @@
 </main>
 
 <script type="application/javascript">
+    const getHeading = function getHeading(doomsday) {
+        if (!doomsday || (!doomsday.time && doomsday.time !== 0)) {
+            return 'I really don\'t know';
+        }
+
+        if (doomsday.time >= (15 * 60)) {
+            return 'No!';
+        }
+
+        if (doomsday.time >= (10 * 60)) {
+            return 'No...'
+        }
+
+        if (doomsday.time >= (5 * 60)) {
+            return 'Not quite'
+        }
+
+        if (doomsday.time >= (2* 60)) {
+            return 'Not yet'
+        }
+
+        if (doomsday.time >= (2)) {
+            return 'Very close now'
+        }
+
+        if (doomsday.time === 1) {
+            return 'Pretty much'
+        }
+
+        return "YES!"
+    }
+
+    const getSubText = function getSubText(doomsday) {
+        if (!doomsday || (!doomsday.time && doomsday.time !== 0)) {
+            return 'There\'s <b>certainly</b> someone out there doing something <b>stupid</b>!';
+        }
+
+        if (doomsday.time >= (15 * 60)) {
+            return 'We\'re <b>surprisingly</b> far away from it.';
+        }
+
+        if (doomsday.time >= (10 * 60)) {
+            return 'But it\'s <b>not</b> looking good!'
+        }
+
+        if (doomsday.time >= (5 * 60)) {
+            return '<b>But</b> we\'re getting <b>close</b>!'
+        }
+
+        if (doomsday.time >= (2* 60)) {
+            return '<b>But</b> we\'re <b>actively working</b> on it!'
+        }
+
+        if (doomsday.time >= (2)) {
+            return '<b>We\'ve</b> done a <b>great</b> job so far!'
+        }
+
+        if (doomsday.time === 1) {
+            return 'We\'re really <b>good</b> at <b>this</b>!'
+        }
+
+        return 'Yep, <b>that\'s it</b>! I\'m <b>surprised</b> you can still read this!'
+    }
+
+    const getTheme = function getTheme(doomsday) {
+        if (!doomsday || (!doomsday.time && doomsday.time !== 0)) {
+            return 'light';
+        }
+
+        if (doomsday.time >= (15 * 60)) {
+            return 'lightest';
+        }
+
+        if (doomsday.time >= (10 * 60)) {
+            return 'lighter'
+        }
+
+        if (doomsday.time >= (5 * 60)) {
+            return 'light'
+        }
+
+        if (doomsday.time >= (2* 60)) {
+            return 'medium'
+        }
+
+        if (doomsday.time >= (2)) {
+            return 'dark'
+        }
+
+        if (doomsday.time === 1) {
+            return 'darker'
+        }
+
+        return 'darkest'
+    }
+
+    const rotateClock = function rotateClock(doomsday) {
+
+    }
+
+
+
     fetch('https://www.arewefuckedyet.com/doomsday.json', {
         method: 'GET',
         redirect: 'follow',
@@ -167,14 +269,49 @@
             'Access-Control-Request-Method': 'GET, HEAD'
         }
     }).then(async function (data) {
-        console.log(await data.json());
+        const jsonData = await data.json()
+
+        const headingElement = document.getElementById('heading');
+        const subTextElement = document.getElementById('subtext');
+        const themeElement = document.querySelector('html');
+        const minuteHand = document.querySelector('.minute');
+
+        if (!jsonData.time && jsonData.time !== 0) {
+            return data;
+        }
+
+        // we start 01 after 12 and make our round
+        let intervalTime = 60 * 59;
+        let localJson = JSON.parse(JSON.stringify(jsonData));
+
+        let interval = setInterval(function () {
+            let minPosition = intervalTime * 360 / 60 / 60;
+            intervalTime = intervalTime - 10;
+
+            minuteHand.style.transform = "rotate(" + (-1 * minPosition) + "deg)"
+
+            localJson.time = intervalTime;
+            const subText = getSubText(localJson);
+            const heading = getHeading(localJson);
+            const theme = getTheme(localJson);
+            headingElement.innerHTML = heading;
+            subTextElement.innerHTML = subText;
+            themeElement.setAttribute('data-theme', theme)
+
+            if (intervalTime < Number(jsonData.time)) {
+                clearInterval(interval);
+                return;
+            }
+        }, 20)
+
+        return data;
     }).catch(function (err) {
         console.log(err);
     })
     ;
 </script>
 <!--
-<script src="http://0.0.0.0:3000/logjs.php" async>
+<script src="http://0.0.0.0:3000/logjs.php" defer async>
 -->
 
 </body>
