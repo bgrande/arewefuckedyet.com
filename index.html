@@ -260,15 +260,15 @@
 
 
 
-    fetch('http://localhost:63342/doomsday.json'/*, {
+    fetch('http://localhost:63342/doomsday.json', {
         method: 'GET',
         redirect: 'follow',
-        mode: 'cors',
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Request-Method': 'GET'
+            //'Access-Control-Request-Method': 'GET'
         }
-    }*/).then(async function (data) {
+    }).then(async function (data) {
         const jsonData = await data.json()
 
         const headingElement = document.getElementById('heading');
