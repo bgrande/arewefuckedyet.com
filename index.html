@@ -123,10 +123,10 @@
         <!-- minute hand -->
         <line stroke="red"
                 class='minute'
-              stroke-width="1"
+                stroke-width="1"
                 y1='4'
                 y2='-39'
-                transform="rotate(-2)"
+                transform="rotate(1)"
         />
 
         <!-- second hand -->
@@ -258,6 +258,8 @@
 
     }
 
+
+
     fetch('http://localhost:63342/doomsday.json', {
         method: 'GET',
         redirect: 'follow',
@@ -269,19 +271,40 @@
     }).then(async function (data) {
         const jsonData = await data.json()
 
-        const subText = getSubText(jsonData);
-        const heading = getHeading(jsonData);
-        const theme = getTheme(jsonData);
-
         const headingElement = document.getElementById('heading');
-        headingElement.innerHTML = heading;
-
         const subTextElement = document.getElementById('subtext');
-        subTextElement.innerHTML = subText;
-
         const themeElement = document.querySelector('html');
-        themeElement.setAttribute('data-theme', theme)
-        console.log(themeElement)
+        const minuteHand = document.querySelector('.minute');
+
+        if (!jsonData.time && jsonData.time !== 0) {
+            return data;
+        }
+
+        // we start 01 after 12 and make our round
+        let intervalTime = 60 * 59;
+        let localJson = JSON.parse(JSON.stringify(jsonData));
+
+        let interval = setInterval(function () {
+            let minPosition = intervalTime * 360 / 60 / 60;
+            intervalTime = intervalTime - 10;
+
+            minuteHand.style.transform = "rotate(" + (-1 * minPosition) + "deg)"
+
+            localJson.time = intervalTime;
+            const subText = getSubText(localJson);
+            const heading = getHeading(localJson);
+            const theme = getTheme(localJson);
+            headingElement.innerHTML = heading;
+            subTextElement.innerHTML = subText;
+            themeElement.setAttribute('data-theme', theme)
+
+            if (intervalTime < Number(jsonData.time)) {
+                clearInterval(interval);
+                return;
+            }
+        }, 20)
+
+        return data;
     }).catch(function (err) {
         console.log(err);
     })
