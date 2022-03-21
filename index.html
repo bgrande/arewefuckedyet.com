@@ -154,7 +154,44 @@
     </div>
 </header>
 
-<main class="flex flex-col lg:flex-row min-h-full" id="more">
+<main class="min-h-screen" id="more">
+    <h2 class="text-4xl font-bold text-center mb-5 mt-16">Why would we be fucked yet?</h2>
+    <p class="text-center">Well, look around! I give you a few reasons:</p>
+
+    <div class="flex justify-center flex-col hero-content lg:flex-row">
+        <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h3 class="card-title">War</h3>
+                <p>A superpower in possession of nuclear weapons with a maniac leader started a war lately.</p>
+                <p>Which had all the world's people having wet dreams about any kind of more weapons go very excited.</p>
+            </div>
+        </div>
+
+        <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h3 class="card-title">Germany</h3>
+                <p>Trust me, you don't want headlines like <a class="link" href="https://text.npr.org/1087137501">Germany is supposedly building Europe's largest military</a> seen. Because, well, last time it went so well...</p>
+            </div>
+        </div>
+
+        <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h3 class="card-title">Pandemic</h3>
+                <p>COVID-19 is still around, while not only having a huge death toll, producing long-term sickness and restricting our way of life as well as affecting mental health.</p>
+            </div>
+        </div>
+
+        <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h3 class="card-title">Climate Change</h3>
+                <p>
+                    And then... There's climate change.
+                    This fucker, without a doubt, will make us, as a species with interplanetary ambitions and being relatively intelligent, hit the coffin.
+                    If we're not going to pivot anytime soon, that is!
+                </p>
+            </div>
+        </div>
+    </div>
 </main>
 
 <script type="application/javascript">
@@ -254,12 +291,6 @@
         return 'darkest'
     }
 
-    const rotateClock = function rotateClock(doomsday) {
-
-    }
-
-
-
     fetch('http://localhost:63342/doomsday.json', {
         method: 'GET',
         redirect: 'follow',
@@ -280,8 +311,12 @@
             return data;
         }
 
-        // we start 01 after 12 and make our round
-        let intervalTime = 60 * 59;
+        // we start at min 01 after 12 and make our round
+        let intervalTime = Number(jsonData.time) + 900;
+        if (intervalTime > 60 * 59) {
+            intervalTime = 60 * 59;
+        }
+
         let localJson = JSON.parse(JSON.stringify(jsonData));
 
         let interval = setInterval(function () {
