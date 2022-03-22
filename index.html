@@ -313,7 +313,8 @@
         }
 
         // we start at min 01 after 12 and make our round
-        let intervalTime = Number(jsonData.time) + 900;
+        const startInterval = Number(jsonData.time) + 900;
+        let intervalTime = startInterval;
         if (intervalTime > 60 * 59) {
             intervalTime = 60 * 59;
         }
@@ -327,18 +328,23 @@
             minuteHand.style.transform = "rotate(" + (-1 * minPosition) + "deg)"
 
             localJson.time = intervalTime;
-            const subText = getSubText(localJson);
-            const heading = getHeading(localJson);
-            const theme = getTheme(localJson);
-            headingElement.innerHTML = heading;
-            subTextElement.innerHTML = subText;
-            themeElement.setAttribute('data-theme', theme)
+
+            if (intervalTime <= (15 * 60)) {
+                setTimeout(function () {
+                    const subText = getSubText(localJson);
+                    const heading = getHeading(localJson);
+                    const theme = getTheme(localJson);
+                    headingElement.innerHTML = heading;
+                    subTextElement.innerHTML = subText;
+                    themeElement.setAttribute('data-theme', theme)
+                }, 100 + (startInterval - intervalTime));
+            }
 
             if (intervalTime < Number(jsonData.time)) {
                 clearInterval(interval);
                 return;
             }
-        }, 20)
+        }, 100)
 
         return data;
     }).catch(function (err) {
