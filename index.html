@@ -24,126 +24,108 @@
     <link href="tailwind.css" rel="stylesheet" media="all">
 </head>
 <body>
-<div class="" title="doomsday clock">
-    <svg viewBox='-50 -50 100 100' width="100" height="100" title="doomsday clock">
-        <circle class='clock-face' r='48' fill="#fff" />
-
-        <!-- markers -->
-        <line stroke="#000"
-                class='minor'
-                y1='42'
-                y2='45'
-              transform="rotate(180)"
-        />
-
-        <line stroke="#000"
-                class='minor'
-                y1='42'
-                y2='45'
-              transform="rotate(150)"
-        />
-
-        <line stroke="#000"
-                class='minor'
-                y1='42'
-                y2='45'
-              transform="rotate(-150)"
-        />
-
-        <line stroke="#000"
-                class='minor'
-                y1='42'
-                y2='45'
-              transform="rotate(120)"
-        />
-
-        <line stroke="#000"
-                class='minor'
-                y1='42'
-                y2='45'
-              transform="rotate(-120)"
-        />
-
-        <line stroke="#000"
-              class='minor'
-              y1='42'
-              y2='45'
-              transform="rotate(90)"
-        />
-
-        <line stroke="#000"
-              class='minor'
-              y1='42'
-              y2='45'
-              transform="rotate(60)"
-        />
-
-        <line stroke="#000"
-              class='minor'
-              y1='42'
-              y2='45'
-              transform="rotate(-60)"
-        />
-
-        <line stroke="#000"
-              class='minor'
-              y1='42'
-              y2='45'
-              transform="rotate(30)"
-        />
-
-        <line stroke="#000"
-              class='minor'
-              y1='42'
-              y2='45'
-              transform="rotate(-30)"
-        />
-
-        <line stroke="#000"
-              class='minor'
-              y1='42'
-              y2='45'
-              transform="rotate(-90)"
-        />
-
-        <line stroke="#000"
-              class='minor'
-              y1='42'
-              y2='45'
-        />
-
-        <!-- hour hand -->
-        <line stroke="darkred"
-                stroke-width="2"
-                class='hour'
-                y1='3'
-                y2='-20'
-        />
-
-        <!-- minute hand -->
-        <line stroke="red"
-                class='minute'
-                stroke-width="1"
-                y1='4'
-                y2='-39'
-                transform="rotate(1)"
-        />
-
-        <!-- second hand -->
-        <g>
-            <line class='second' y1='10' y2='-38' fill="#000"/>
-            <line class='second-counterweight' y1='10' y2='2'/>
-        </g>
-    </svg>
-</div>
 <header class="hero min-h-screen">
-    <div class="flex-col hero-content lg:flex-row-reverse">
-        <div class="">
+    <div class="hero-content flex flex-col lg:flex-row-reverse">
+        <div class="" title="doomsday clock">
+            <svg viewBox="-50 -50 100 100" width="250" height="250" title="doomsday clock">
+                <circle class="clock-face" r="48" fill="#fff" />
+                <!-- markers -->
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                      transform="rotate(180)"
+                />
+
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                      transform="rotate(150)"
+                />
+
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                      transform="rotate(-150)"
+                />
+
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                      transform="rotate(120)"
+                />
+
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                      transform="rotate(-120)"
+                />
+
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                      transform="rotate(90)"
+                />
+
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                      transform="rotate(60)"
+                />
+
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                      transform="rotate(-60)"
+                />
+
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                      transform="rotate(30)"
+                />
+
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                      transform="rotate(-30)"
+                />
+
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                      transform="rotate(-90)"
+                />
+
+                <line stroke="#000"
+                      y1="42"
+                      y2="45"
+                />
+
+                <!-- hour hand -->
+                <line stroke="darkred"
+                      stroke-width="2"
+                      class="hour"
+                      y1="3"
+                      y2="-20"
+                />
+
+                <!-- minute hand -->
+                <line stroke="red"
+                      class="minute"
+                      stroke-width="1"
+                      y1="4"
+                      y2="-39"
+                      transform="rotate(1)"
+                />
+            </svg>
+        </div>
+        <div class="lg:min-w-[960px]">
             <div class="text-center">
                 <h1 class="text-9xl font-bold" id="heading">
                     I honestly don't know
                 </h1>
-                <p class="mt-16 mb-5 text-4xl" id="subtext">
+                <p id="percentage" class="text-4xl font-bold mt-12" title="State of being fucked"></p>
+                <p class="mt-12 mb-5 text-4xl" id="subtext">
                     There's <b>certainly</b> someone out there doing something <b>stupid</b>!
                 </p>
                 <p class="mt-16">
@@ -198,31 +180,31 @@
 <script type="application/javascript">
     const getHeading = function getHeading(doomsday) {
         if (!doomsday || (!doomsday.time && doomsday.time !== 0)) {
-            return 'I really don\'t know';
+            return "I really don\'t know";
         }
 
         if (doomsday.time >= (15 * 60)) {
-            return 'No!';
+            return "No!";
         }
 
         if (doomsday.time >= (10 * 60)) {
-            return 'No...'
+            return "No..."
         }
 
         if (doomsday.time >= (5 * 60)) {
-            return 'Not quite'
+            return "Not quite"
         }
 
         if (doomsday.time >= (2* 60)) {
-            return 'Not yet'
+            return "Not yet"
         }
 
         if (doomsday.time >= (2)) {
-            return 'Very close now'
+            return "Very close now"
         }
 
         if (doomsday.time === 1) {
-            return 'Pretty much'
+            return "Pretty much"
         }
 
         return "YES!"
@@ -230,83 +212,83 @@
 
     const getSubText = function getSubText(doomsday) {
         if (!doomsday || (!doomsday.time && doomsday.time !== 0)) {
-            return 'There\'s <b>certainly</b> someone out there doing something <b>stupid</b>!';
+            return "There\'s <b>certainly</b> someone out there doing something <b>stupid</b>!";
         }
 
         if (doomsday.time >= (15 * 60)) {
-            return 'We\'re <b>surprisingly</b> far away from it.';
+            return "We\'re <b>surprisingly</b> far away from it.";
         }
 
         if (doomsday.time >= (10 * 60)) {
-            return 'But it\'s <b>not</b> looking good!'
+            return "But it\'s <b>not</b> looking good!"
         }
 
         if (doomsday.time >= (5 * 60)) {
-            return '<b>But</b> we\'re getting <b>close</b>!'
+            return "<b>But</b> we\'re getting <b>close</b>!"
         }
 
         if (doomsday.time >= (2* 60)) {
-            return '<b>But</b> we\'re <b>actively working</b> on it!'
+            return "<b>But</b> we\'re <b>actively working</b> on it!"
         }
 
         if (doomsday.time >= (2)) {
-            return '<b>We\'ve</b> done a <b>great</b> job so far!'
+            return "<b>We\'ve</b> done a <b>great</b> job so far!"
         }
 
         if (doomsday.time === 1) {
-            return 'We\'re really <b>good</b> at <b>this</b>!'
+            return "We\'re really <b>good</b> at <b>this</b>!"
         }
 
-        return 'Yep, <b>that\'s it</b>! I\'m <b>surprised</b> you can still read this!'
+        return "Yep, <b>that\'s it</b>! I\'m <b>surprised</b> you can still read this!"
     }
 
     const getTheme = function getTheme(doomsday) {
         if (!doomsday || (!doomsday.time && doomsday.time !== 0)) {
-            return 'light';
+            return "light";
         }
 
         if (doomsday.time >= (15 * 60)) {
-            return 'lightest';
+            return "lightest";
         }
 
         if (doomsday.time >= (10 * 60)) {
-            return 'lighter'
+            return "lighter"
         }
 
         if (doomsday.time >= (5 * 60)) {
-            return 'light'
+            return "light"
         }
 
         if (doomsday.time >= (2* 60)) {
-            return 'medium'
+            return "medium"
         }
 
         if (doomsday.time >= (2)) {
-            return 'dark'
+            return "dark"
         }
 
         if (doomsday.time === 1) {
-            return 'darker'
+            return "darker"
         }
 
-        return 'darkest'
+        return "darkest"
     }
 
-    fetch('http://localhost:63342/doomsday.json', {
-        method: 'GET',
-        redirect: 'follow',
-        mode: 'cors',
+    fetch("http://localhost:63342/doomsday.json", {
+        method: "GET",
+        redirect: "follow",
+        mode: "cors",
         headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Request-Method': 'GET'
+            "Content-Type": "application/json",
+            "Access-Control-Request-Method": "GET"
         }
     }).then(async function (data) {
         const jsonData = await data.json()
 
-        const headingElement = document.getElementById('heading');
-        const subTextElement = document.getElementById('subtext');
-        const themeElement = document.querySelector('html');
-        const minuteHand = document.querySelector('.minute');
+        const headingElement = document.getElementById("heading");
+        const subTextElement = document.getElementById("subtext");
+        const themeElement = document.querySelector("html");
+        const minuteHand = document.querySelector(".minute");
 
         if (!jsonData.time && jsonData.time !== 0) {
             return data;
@@ -336,18 +318,22 @@
                     const theme = getTheme(localJson);
                     headingElement.innerHTML = heading;
                     subTextElement.innerHTML = subText;
-                    themeElement.setAttribute('data-theme', theme)
+                    themeElement.setAttribute("data-theme", theme)
                 }, 100 + (startInterval - intervalTime));
             }
 
             if (intervalTime < Number(jsonData.time)) {
+                const fuckedPercentage = Math.round((1 - (Number(jsonData.time) / (60 * 60))) * 100);
+                const percentageElement = document.getElementById("percentage");
+                percentageElement.innerText = fuckedPercentage + "%";
                 clearInterval(interval);
                 return;
             }
         }, 100)
 
-        return data;
-    }).catch(function (err) {
+        return jsonData;
+    })
+    .catch(function (err) {
         console.log(err);
     })
     ;
