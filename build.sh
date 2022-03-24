@@ -14,6 +14,7 @@ sleep 1
 
 # copy file to target
 cp index.html doomsday.json dist/
+cp -r img dist/
 
 # some adjustments if necessary
 sed -i ":a;N;\$!ba;s/$DEV_JSON_PATH/$JSON_PATH/g" dist/index.html
