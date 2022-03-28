@@ -24,6 +24,14 @@
     <link href="tailwind.css" rel="stylesheet" media="all">
 </head>
 <body>
+
+<div class="mt-4 text-center">
+    <form id="vote_yesno">
+        <p class="font-bold text-xl mb-4">What do you think?</p>
+        <button class="btn btn-primary disabled:text-slate-600" name="yes" id="vote_yes">Yes</button>
+        <button class="btn btn-secondary disabled:text-slate-600" name="no" id="vote_no">No</button>
+    </form>
+</div>
 <header class="hero min-h-screen">
     <div class="hero-content flex flex-col lg:flex-row-reverse">
         <div class="" title="doomsday clock">
@@ -402,9 +410,8 @@
     })
     ;
 </script>
-<!--
-<script src="http://0.0.0.0:3000/logjs.php" defer async>
--->
+<script src="http://0.0.0.0:8080/arewefuckedyet.com/votejs" defer async></script>
+<!--<script src="http://0.0.0.0:3000/logjs.php" defer async></script>-->
 
 </body>
 </html>
