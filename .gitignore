@@ -3,3 +3,4 @@ vendor
 dist/*
 *.log
 doomsday.json
+graphic
