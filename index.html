@@ -275,103 +275,93 @@
         })
     }
 
+    const stateObjectList = [
+        {
+            threshold: null,
+            heading: "I really don\'t know",
+            subtext: "There\'s <b>certainly</b> someone out there doing something <b>stupid</b>!",
+            theme: "light",
+        },
+        // 15 * 60
+        {
+            threshold: 900,
+            heading: "No!",
+            subtext: "We\'re <b>surprisingly</b> far away from it.",
+            theme: "lightest",
 
+        },
+        // 10 * 60
+        {
+            threshold: 600,
+            heading: "No...",
+            subtext: "But it\'s <b>not</b> looking good!",
+            theme: "lighter",
+        },
+        // 5 * 60
+        {
+            threshold: 300,
+            heading: "Not quite",
+            subtext: "<b>But</b> we\'re getting <b>close</b>!",
+            theme: "light",
+        },
+        // 2 * 60
+        {
+            threshold: 120,
+            heading: "Not yet",
+            subtext: "<b>But</b> we\'re <b>actively working</b> on it!",
+            theme: "medium",
+        },
+        // 30
+        {
+            threshold: 30,
+            heading: "Very close now",
+            subtext: "<b>We\'ve</b> done a <b>great</b> job so far!",
+            theme: "dark",
+        },
+        // 10
+        {
+            threshold: 1,
+            heading: "Pretty much",
+            subtext: "We\'re really <b>good</b> at <b>this</b>!",
+            theme: "darker",
+        },
+        // 0
+        {
+            threshold: 0,
+            heading: "YES!",
+            subtext: "Yep, <b>that\'s it</b>! I\'m <b>surprised</b> you can still read this!",
+            theme: "darkest",
+        }
+    ]
 
-    // tood: simplify
-    const getHeading = function getHeading(doomsday) {
+    const getStateObject = function getStateObject(doomsday, stateObjects) {
         if (!doomsday || (!doomsday.time && doomsday.time !== 0)) {
-            return "I really don\'t know";
+            return stateObjects['fallback'];
         }
 
-        if (doomsday.time >= (15 * 60)) {
-            return "No!";
+        for (let state in stateObjects) {
+            if (!stateObjects.hasOwnProperty(state) || stateObjects[state].threshold === null) {
+                continue;
+            }
+
+            if (doomsday.time >= stateObjects[state].threshold) {
+                return stateObjects[state];
+            }
         }
 
-        if (doomsday.time >= (10 * 60)) {
-            return "No..."
-        }
-
-        if (doomsday.time >= (5 * 60)) {
-            return "Not quite"
-        }
-
-        if (doomsday.time >= (2* 60)) {
-            return "Not yet"
-        }
-
-        if (doomsday.time >= (2)) {
-            return "Very close now"
-        }
-
-        if (doomsday.time === 1) {
-            return "Pretty much"
-        }
-
-        return "YES!"
+        return stateObjects['fallback'];
     }
 
-    const getSubText = function getSubText(doomsday) {
-        if (!doomsday || (!doomsday.time && doomsday.time !== 0)) {
-            return "There\'s <b>certainly</b> someone out there doing something <b>stupid</b>!";
-        }
-
-        if (doomsday.time >= (15 * 60)) {
-            return "We\'re <b>surprisingly</b> far away from it.";
-        }
-
-        if (doomsday.time >= (10 * 60)) {
-            return "But it\'s <b>not</b> looking good!"
-        }
-
-        if (doomsday.time >= (5 * 60)) {
-            return "<b>But</b> we\'re getting <b>close</b>!"
-        }
-
-        if (doomsday.time >= (2* 60)) {
-            return "<b>But</b> we\'re <b>actively working</b> on it!"
-        }
-
-        if (doomsday.time >= (2)) {
-            return "<b>We\'ve</b> done a <b>great</b> job so far!"
-        }
-
-        if (doomsday.time === 1) {
-            return "We\'re really <b>good</b> at <b>this</b>!"
-        }
-
-        return "Yep, <b>that\'s it</b>! I\'m <b>surprised</b> you can still read this!"
+    const getHeading = function getHeading(stateObject) {
+        return stateObject.heading;
     }
 
-    const getTheme = function getTheme(doomsday) {
-        if (!doomsday || (!doomsday.time && doomsday.time !== 0)) {
-            return "light";
-        }
+    const getSubText = function getSubText(stateObject) {
+        return stateObject.subtext;
+    }
 
-        if (doomsday.time >= (15 * 60)) {
-            return "lightest";
-        }
-
-        if (doomsday.time >= (10 * 60)) {
-            return "lighter"
-        }
-
-        if (doomsday.time >= (5 * 60)) {
-            return "light"
-        }
-
-        if (doomsday.time >= (2* 60)) {
-            return "medium"
-        }
-
-        if (doomsday.time >= (2)) {
-            return "dark"
-        }
-
-        if (doomsday.time === 1) {
-            return "darker"
-        }
-
-        return "darkest"
+    const getTheme = function getTheme(stateObject) {
+        return stateObject.theme;
     }
 
     fetch("https://arewefuckedyet.com/doomsday.json", {
@@ -413,9 +403,10 @@
 
             if (intervalTime <= (15 * 60)) {
                 setTimeout(function () {
-                    const subText = getSubText(localJson);
-                    const heading = getHeading(localJson);
-                    const theme = getTheme(localJson);
+                    const stateObject = getStateObject(localJson, stateObjectList);
+                    const subText = getSubText(stateObject);
+                    const heading = getHeading(stateObject);
+                    const theme = getTheme(stateObject);
                     headingElement.innerHTML = heading;
                     subTextElement.innerHTML = subText;
                     themeElement.setAttribute("data-theme", theme)
@@ -438,7 +429,7 @@
     })
     ;
 </script>
-<script src="http://localhost:8080/arewefuckedyet.com/votejs" defer async></script>
+<script src="https://yesno.pagereply.com/arewefuckedyet.com/votejs" defer async></script>
 <!--<script src="http://0.0.0.0:3000/logjs.php" defer async></script>-->
 
 </body>
