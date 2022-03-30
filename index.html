@@ -25,120 +25,122 @@
 </head>
 <body>
 
-<div class="mt-4 text-center">
-    <form id="vote_yesno">
-        <p class="font-bold text-xl mb-4">What do you think?</p>
-        <button class="btn btn-primary disabled:text-slate-600" name="yes" id="vote_yes">Yes</button>
-        <button class="btn btn-secondary disabled:text-slate-600" name="no" id="vote_no">No</button>
-    </form>
-</div>
-<header class="hero min-h-screen">
-    <div class="hero-content flex flex-col lg:flex-row-reverse">
-        <div class="" title="doomsday clock">
-            <svg viewBox="-50 -50 100 100" width="250" height="250" title="doomsday clock">
-                <circle class="clock-face" r="48" fill="#fff" />
-                <!-- markers -->
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                      transform="rotate(180)"
-                />
+<header class="min-h-screen">
+    <div class="mt-4 mb-4 text-center lg:min-w-full lg:mb-24 lg:mt-16">
+        <form id="vote_yesno">
+            <p class="font-bold text-xl mb-4">What do you think?</p>
+            <button class="btn btn-primary disabled:text-slate-600" name="yes" id="vote_yes">Yes</button>
+            <button class="btn btn-secondary disabled:text-slate-600" name="no" id="vote_no">No</button>
+        </form>
+    </div>
+    <div class="hero">
+        <div class="hero-content flex flex-col lg:flex-row-reverse">
+            <div class="" title="doomsday clock">
+                <svg viewBox="-50 -50 100 100" width="250" height="250" title="doomsday clock">
+                    <circle class="clock-face" r="48" fill="#fff" />
+                    <!-- markers -->
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                          transform="rotate(180)"
+                    />
 
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                      transform="rotate(150)"
-                />
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                          transform="rotate(150)"
+                    />
 
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                      transform="rotate(-150)"
-                />
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                          transform="rotate(-150)"
+                    />
 
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                      transform="rotate(120)"
-                />
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                          transform="rotate(120)"
+                    />
 
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                      transform="rotate(-120)"
-                />
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                          transform="rotate(-120)"
+                    />
 
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                      transform="rotate(90)"
-                />
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                          transform="rotate(90)"
+                    />
 
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                      transform="rotate(60)"
-                />
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                          transform="rotate(60)"
+                    />
 
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                      transform="rotate(-60)"
-                />
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                          transform="rotate(-60)"
+                    />
 
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                      transform="rotate(30)"
-                />
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                          transform="rotate(30)"
+                    />
 
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                      transform="rotate(-30)"
-                />
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                          transform="rotate(-30)"
+                    />
 
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                      transform="rotate(-90)"
-                />
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                          transform="rotate(-90)"
+                    />
 
-                <line stroke="#000"
-                      y1="42"
-                      y2="45"
-                />
+                    <line stroke="#000"
+                          y1="42"
+                          y2="45"
+                    />
 
-                <!-- hour hand -->
-                <line stroke="darkred"
-                      stroke-width="2"
-                      class="hour"
-                      y1="3"
-                      y2="-20"
-                />
+                    <!-- hour hand -->
+                    <line stroke="darkred"
+                          stroke-width="2"
+                          class="hour"
+                          y1="3"
+                          y2="-20"
+                    />
 
-                <!-- minute hand -->
-                <line stroke="red"
-                      class="minute"
-                      stroke-width="1"
-                      y1="4"
-                      y2="-39"
-                      transform="rotate(1)"
-                />
-            </svg>
-        </div>
-        <div class="lg:min-w-[960px]">
-            <div class="text-center">
-                <h1 class="text-6xl font-bold md:text-9xl" id="heading">
-                    I honestly don't know
-                </h1>
-                <p id="percentage" class="text-4xl font-bold mt-12" title="State of being fucked"></p>
-                <p class="mt-12 mb-5 text-3xl md:text-4xl" id="subtext">
-                    There's <b>certainly</b> someone out there doing something <b>stupid</b>!
-                </p>
-                <p class="mt-16">
-                    <a class="btn btn-primary" href="#more" title="Read more">Read more!</a>
-                </p>
+                    <!-- minute hand -->
+                    <line stroke="red"
+                          class="minute"
+                          stroke-width="1"
+                          y1="4"
+                          y2="-39"
+                          transform="rotate(1)"
+                    />
+                </svg>
+            </div>
+            <div class="lg:min-w-[960px]">
+                <div class="text-center">
+                    <h1 class="text-6xl font-bold md:text-9xl" id="heading">
+                        I honestly don't know
+                    </h1>
+                    <p id="percentage" class="text-4xl font-bold mt-12" title="State of being fucked"></p>
+                    <p class="mt-12 mb-5 text-3xl md:text-4xl" id="subtext">
+                        There's <b>certainly</b> someone out there doing something <b>stupid</b>!
+                    </p>
+                    <p class="mt-16">
+                        <a class="btn btn-primary" href="#more" title="Read more">Read more!</a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -250,6 +252,7 @@
 </section>
 
 <script type="application/javascript">
+
     // tood: simplify
     const getHeading = function getHeading(doomsday) {
         if (!doomsday || (!doomsday.time && doomsday.time !== 0)) {
