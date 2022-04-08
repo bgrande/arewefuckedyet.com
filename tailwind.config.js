@@ -3,15 +3,17 @@ module.exports = {
   purge: {
     enabled: process.env.NODE_ENV === 'production',
     content: [
-      './index.html',
+      './*.html',
     ],
     options: {
       safelist: [
-        /data-theme$/,
+        {
+          pattern: /data-theme$/,
+        }
       ]
     },
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "media", // 'media' or 'class'
   variants: {
     extend: {},
   },
