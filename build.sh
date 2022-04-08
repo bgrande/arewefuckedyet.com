@@ -16,6 +16,8 @@ sleep 1
 cp index.html doomsday.json dist/
 cp -r img dist/
 cp .nojekyll dist/
+cp favicon.ico icon.png tile.png tile-wide.png dist/
+cp robots.txt site.manifest dist/
 
 # some adjustments if necessary
 sed -i ":a;N;\$!ba;s/$DEV_JSON_PATH/$JSON_PATH/g" dist/index.html
