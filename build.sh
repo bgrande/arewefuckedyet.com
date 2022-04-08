@@ -16,7 +16,7 @@ sleep 1
 cp index.html doomsday.json impress.html dist/
 cp -r img dist/
 cp .nojekyll dist/
-cp favicon.ico icon.png tile.png tile-wide.png dist/
+cp favicon.ico favicon.svg icon.png tile.png tile-wide.png dist/
 cp robots.txt site.manifest dist/
 
 # some adjustments if necessary
