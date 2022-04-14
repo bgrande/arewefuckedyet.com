@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="canonical" href="https://arewefuckedyet.com">
+    <link rel="canonical" href="https://arewefuckedyet.com/impress.html">
     <title>Are we fucked yet? Impress</title>
 
     <meta name="robots" content="noindex">
@@ -13,8 +13,8 @@
 </head>
 <body>
 
-<main class="min-h-screen w-min-full p-6 flex flex-grow justify-center" id="more">
-    <div>
+<main class="min-h-screen w-min-full p-6 bg-primary-500" id="more">
+    <div class="w-96 shadow-xl m-auto">
         <h1 class="text-4xl font-bold">Impress</h1>
         <div class="mt-6">
             <h2 class="font-bold">Responsible Site Operator</h2>
@@ -28,31 +28,34 @@
                 <sup>1</sup>
                 <span class="text-xs">The email address has been obscured due to spam protection. <br>Please replace <i>Symbol</i> by <i>@</i> respectively <i>Dot</i> by <i>.</i> <br>Or just click on the address above!</span>
             </p>
-            <h2 class="font-bold">Settlement of disputes</h2>
-            <p>
-                European Commission's dispute settlement platform:
-                <a class="link" href="http://ec.europa.eu/consumers/odr" aria-label="European Unions Online Dispute Resolution platform" class="external">Online Dispute Resolution (ODR)</a>.
-            </p>
+
+            <div class="mt-10">
+                <a href="https://arewefuckedyet.com" class="btn btn-primary">Back to home</a>
+            </div>
         </div>
+
     </div>
-    <script type="text/javascript">
-        function getEmail() {
-            const mailPrefix = "mail", domain = "rheincoder", tld = "com";
-            return mailPrefix + "@" + domain + "." + tld;
-        }
 
-        (function () {
-            let mail = document.getElementById('impress-mail');
 
-            if (mail) {
-                mail.addEventListener('mouseover', function (e) {
-                    e.target.setAttribute("href", "mailto:" + getEmail());
-                });
-            }
-        })();
-    </script>
 </main>
 
+
+<script type="text/javascript">
+    function getEmail() {
+        const mailPrefix = "mail", domain = "rheincoder", tld = "com";
+        return mailPrefix + "@" + domain + "." + tld;
+    }
+
+    (function () {
+        let mail = document.getElementById('impress-mail');
+
+        if (mail) {
+            mail.addEventListener('mouseover', function (e) {
+                e.target.setAttribute("href", "mailto:" + getEmail());
+            });
+        }
+    })();
+</script>
 <!--<script src="http://0.0.0.0:3000/logjs.php" defer async></script>-->
 
 </body>
