@@ -140,11 +140,11 @@
                     <h1 class="text-6xl font-bold md:text-9xl" id="heading">
                         I honestly don't know
                     </h1>
-                    <p id="percentage" class="text-4xl font-bold mt-12" title="State of being fucked">&nbsp;</p>
-                    <p id="userpoll" class="text-4xl font-bold mt-12" title="How the page's users think we're fucked">&nbsp;</p>
                     <p class="mt-12 mb-5 text-3xl md:text-4xl" id="subtext">
                         There's <b>certainly</b> someone out there doing something <b>stupid</b>!
                     </p>
+                    <p id="percentage" class="text-2xl mt-8" title="State of being fucked">&nbsp;</p>
+                    <p id="userpoll" class="text-2xl mt-8" title="How the page's users think we're fucked">&nbsp;</p>
                     <p class="mt-16">
                         <a class="btn btn-primary" href="#more" title="Read more">Read more!</a>
                     </p>
@@ -506,7 +506,7 @@
             const fuckedPercentage = Math.round((1 - (Number(jsonData.time) / (60 * 60))) * 100);
             const percentageElement = document.getElementById("percentage");
             const userPollElement = document.getElementById("userpoll");
-            percentageElement.innerText = fuckedPercentage + "% progress";
+            percentageElement.innerHTML = '<span class="font-bold">' + fuckedPercentage + "%</span> progress";
 
             const yesno = await fetch('https://yesno.pagereply.com/arewefuckedyet.com/vote', {
                 method: "GET",
@@ -521,7 +521,7 @@
             const yesnoSum = yesno.yes + yesno.no;
             const fuckedFromQuestions = yesno.yes / yesnoSum;
 
-            userPollElement.innerText = Math.round(fuckedFromQuestions * 100) + "% of users think we're fucked";
+            userPollElement.innerHTML = '<span class="font-bold">' + Math.round(fuckedFromQuestions * 100) + "%</span> of users think we're fucked";
 
             if (intervalTime < Number(jsonData.time)) {
                 clearInterval(interval);
