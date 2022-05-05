@@ -141,6 +141,7 @@
                         I honestly don't know
                     </h1>
                     <p id="percentage" class="text-4xl font-bold mt-12" title="State of being fucked">&nbsp;</p>
+                    <p id="userpoll" class="text-4xl font-bold mt-12" title="How the page's users think we're fucked">&nbsp;</p>
                     <p class="mt-12 mb-5 text-3xl md:text-4xl" id="subtext">
                         There's <b>certainly</b> someone out there doing something <b>stupid</b>!
                     </p>
@@ -333,6 +334,8 @@
     </div>
 </footer>
 
+<script src="https://yesno.pagereply.com/arewefuckedyet.com/votejs" defer async></script>
+<script src="https://usagelog.pagereply.com/logjs?source=arewefuckedyet.com" defer async></script>
 <script type="application/javascript">
     const affiliateLinks = document.getElementsByClassName('affiliate');
 
@@ -491,7 +494,7 @@
 
         setTextAndLayoutByClock(jsonData, stateObjectList, headingElement, subTextElement, themeElement);
 
-        let interval = setInterval(function () {
+        let interval = setInterval(async function () {
             let minPosition = intervalTime * 360 / 60 / 60;
             intervalTime = intervalTime - clockSpeed;
 
@@ -499,10 +502,28 @@
 
             localJson.time = intervalTime;
 
+
+            const fuckedPercentage = Math.round((1 - (Number(jsonData.time) / (60 * 60))) * 100);
+            const percentageElement = document.getElementById("percentage");
+            const userPollElement = document.getElementById("userpoll");
+            percentageElement.innerText = fuckedPercentage + "% progress";
+
+            const yesno = await fetch('https://yesno.pagereply.com/arewefuckedyet.com/vote', {
+                method: "GET",
+                mode: "cors",
+                headers: {
+                    "Content-type": "application/json"
+                }
+            }).then(async function(data){
+                return data.json();
+            });
+
+            const yesnoSum = yesno.yes + yesno.no;
+            const fuckedFromQuestions = yesno.yes / yesnoSum;
+
+            userPollElement.innerText = Math.round(fuckedFromQuestions * 100) + "% of users think we're fucked";
+
             if (intervalTime < Number(jsonData.time)) {
-                const fuckedPercentage = Math.round((1 - (Number(jsonData.time) / (60 * 60))) * 100);
-                const percentageElement = document.getElementById("percentage");
-                percentageElement.innerText = fuckedPercentage + "%";
                 clearInterval(interval);
                 return;
             }
@@ -513,10 +534,8 @@
     .catch(function (err) {
         console.log(err);
     })
-    ;
+        ;
 </script>
-<script src="https://yesno.pagereply.com/arewefuckedyet.com/votejs" defer async></script>
-<script src="https://usagelog.pagereply.com/logjs?source=arewefuckedyet.com" defer async></script>
 
 </body>
 </html>
