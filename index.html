@@ -509,15 +509,7 @@
 
         setTextAndLayoutByClock(jsonData, stateObjectList, headingElement, subTextElement, themeElement);
 
-        let interval = setInterval(async function () {
-            let minPosition = intervalTime * 360 / 60 / 60;
-            intervalTime = intervalTime - clockSpeed;
-
-            minuteHand.style.transform = "rotate(" + (-1 * minPosition) + "deg)"
-
-            localJson.time = intervalTime;
-
-
+        setTimeout(async function () {
             const fuckedPercentage = Math.round((1 - (Number(jsonData.time) / (60 * 60))) * 100);
             const percentageElement = document.getElementById("percentage");
             const userPollElement = document.getElementById("userpoll");
@@ -537,6 +529,16 @@
             const fuckedFromQuestions = yesno.yes / yesnoSum;
 
             userPollElement.innerHTML = '<span class="font-bold">' + Math.round(fuckedFromQuestions * 100) + "%</span> of users think we're fucked";
+        }, 100);
+
+
+        let interval = setInterval(async function () {
+            let minPosition = intervalTime * 360 / 60 / 60;
+            intervalTime = intervalTime - clockSpeed;
+
+            minuteHand.style.transform = "rotate(" + (-1 * minPosition) + "deg)"
+
+            localJson.time = intervalTime;
 
             if (intervalTime < Number(jsonData.time)) {
                 clearInterval(interval);
