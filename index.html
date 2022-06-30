@@ -275,7 +275,12 @@
         </p>
         <p class="mb-4 relative block">
             Also, there's that interesting and a bit depressing <a href="https://www.youtube.com/watch?v=M7hOpT0lPGI" class="link" title="external link to youtube video about nuclear war">TEDx Talk by Brian Toon about nuclear wars</a>:
-            <iframe class="w-full h-[400px]" src="https://www.youtube-nocookie.com/embed/M7hOpT0lPGI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <a class="relative w-full h-[400px] overflow-hidden js-youtube" data-src="https://www.youtube-nocookie.com/embed/M7hOpT0lPGI" href="#">
+                <span>
+                    <span class="absolute flex p-8"><span class="justify-center items-center bg-base-100 p-2 text-center">By clicking the preview you hereby consent to allow youtube's cookies and tracking functionality (consent will be saved for 1 week). <br><b href="btn btn-default">Consent</b></span></span>
+                    <img src="https://i.ytimg.com/vi_webp/M7hOpT0lPGI/sddefault.webp" alt="Just a youtube video preview" />
+                </span>
+            </a>
         </p>
 
         <h4 class="text-xl font-bold mb-3 mt-12">Would anyone survive?</h4>
@@ -309,7 +314,12 @@
         <p class="mb-4 block relative">
             But it doesn't stop there: Agriculture right now does many things wrong and relies heavily on Carbon Fuel based technologies (like fertilizers).
             The good thing, <a href="https://kissthegroundmovie.com/" class="link" title="external link to movie about agriculture and soil regeneration">there might be a solution</a>:
-            <iframe class="w-full h-[400px]" src="https://www.youtube-nocookie.com/embed/3iknWWKZOUs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <a class="relative w-full h-[400px] overflow-hidden js-youtube" data-src="https://www.youtube-nocookie.com/embed/3iknWWKZOUs" href="#">
+                <span>
+                    <span class="absolute flex p-8"><span class="justify-center items-center bg-base-100 p-2 text-center">By clicking the preview you hereby consent to allow youtube's cookies and tracking functionality (consent will be saved for 1 week). <br><b href="btn btn-default">Consent</b></span></span>
+                    <img src="https://i.ytimg.com/vi_webp/3iknWWKZOUs/sddefault.webp" alt="Just a youtube video preview" />
+                </span>
+            </a>
         </p>
 
         <p class="mb-4 block">
@@ -352,6 +362,19 @@
 <script src="https://yesno.pagereply.com/arewefuckedyet.com/votejs" defer async></script>
 <script src="https://usagelog.pagereply.com/logjs?source=arewefuckedyet.com" defer async></script>
 <script type="application/javascript">
+    const setCookie = function setCookie(name, value) {
+        const expires = new Date();
+        const expiry = (7 * 24 * 60 * 60 * 1000); // 1 week
+
+        expires.setTime(expires.getTime() + expiry);
+        document.cookie = name + '=' + value + '; Path=/' + '; Expires=' + expires.toUTCString() + ';Secure';
+    }
+
+    const getCookie = function getCookie(name) {
+        const keyValue = decodeURIComponent(document.cookie).match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        return keyValue ? keyValue[2] : null;
+    }
+
     const affiliateLinks = document.getElementsByClassName('affiliate');
 
     if (affiliateLinks && affiliateLinks.length > 0) {
@@ -375,6 +398,65 @@
                     imgElement.style.display = 'none';
                 }, 1000);
             })
+        }
+    }
+
+    /**
+     *
+     * @param {Element} element
+     * @param {Number} consent
+     * @returns {boolean}
+     */
+    const activateYoutubeEmbed = async function activateYoutubeEmbed(element, consent) {
+        if (!element) {
+            return false;
+        }
+
+        if (consent === undefined || consent === null) {
+            consent = getCookie('yt-consent') || 0;
+        }
+
+        if (consent >= 1) {
+            setCookie('yt-consent', consent);
+            let src = element['data-src'];
+
+            if (!src) {
+                element = element.closest('.js-youtube');
+                src = element.dataset.src;
+            }
+
+            const iframe = document.createElement('iframe');
+            iframe.src = src;
+            iframe.frameBorder = 0;
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            iframe.allowfullscreen = 'allowfullscreen';
+            iframe.title="YouTube video player";
+            iframe.className = "w-full h-[400px]";
+
+            element.replaceWith(iframe);
+            return true;
+        }
+
+        return false;
+    }
+
+    const ytPreviews = document.querySelectorAll('.js-youtube');
+
+    if (ytPreviews) {
+        let preview;
+        for (let i = 0, l = ytPreviews.length; i < l; i++) {
+            if (!ytPreviews.hasOwnProperty(i) || !ytPreviews[i]) {
+                continue;
+            }
+
+            ytPreviews[i].addEventListener('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                activateYoutubeEmbed(event.target, 1)
+            })
+
+            // initiate
+            activateYoutubeEmbed(ytPreviews[i]);
         }
     }
 
