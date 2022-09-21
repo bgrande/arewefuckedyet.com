@@ -14,7 +14,7 @@
     "src/*.js",
     "dist/"
   ],
-  "homepage": "https://github.com/bgrande/arewefuckeyet.com",
+  "homepage": "https://arewefuckeyet.com",
   "license": "MIT",
   "main": "src/index.js",
   "name": "arewefuckedyet",
