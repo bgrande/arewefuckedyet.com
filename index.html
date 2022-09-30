@@ -28,10 +28,10 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <meta name="theme-color" content="#f67dbc">
 
+    <style> .affiliate-off .affiliate.text, .affiliate-off img.affiliate {display: none;}</style>
     <link href="tailwind.css" rel="stylesheet" media="all">
 </head>
-<body>
-
+<body class="affiliate-off">
 <header class="min-h-screen">
     <div class="mt-4 mb-4 text-center lg:min-w-full lg:mb-24 lg:mt-16">
         <form id="vote_yesno">
@@ -160,7 +160,7 @@
 
     <div class="flex flex-wrap justify-center gap-2 mt-12">
         <div class="card w-96 bg-base-100 shadow-xl">
-            <figure><img src="/img/explosion.jpg" class="max-h-[200px] w-full object-cover" alt="Nuclear bomb explosion mushroom cloud" /></figure>
+            <figure><img src="/img/explosion.jpg" class="max-h-[200px] w-full object-cover" alt="Nuclear bomb explosion mushroom cloud" loading="lazy" /></figure>
             <div class="card-body">
                 <h3 class="card-title">War</h3>
                 <p>A superpower in possession of nuclear weapons with a maniac leader started a war lately.</p>
@@ -169,7 +169,7 @@
         </div>
 
         <div class="card w-96 bg-base-100 shadow-xl">
-            <figure><img src="/img/bundestag.jpg" class="max-h-[200px] w-full object-cover" alt="German Bundestag with German flag" /></figure>
+            <figure><img src="/img/bundestag.jpg" class="max-h-[200px] w-full object-cover" alt="German Bundestag with German flag" loading="lazy" /></figure>
             <div class="card-body">
                 <h3 class="card-title">Germany</h3>
                 <p>Trust me, you don't want to see headlines like <a class="link" href="https://text.npr.org/1087137501">Germany is supposedly building Europe's largest military</a>. Because, well, last time it went so well...</p>
@@ -178,7 +178,7 @@
         </div>
 
         <div class="card w-96 bg-base-100 shadow-xl">
-            <figure><img src="/img/covid.jpg" class="max-h-[200px] w-full object-cover" alt="Earth depicted as corona virus - covid" /></figure>
+            <figure><img src="/img/covid.jpg" class="max-h-[200px] w-full object-cover" alt="Earth depicted as corona virus - covid" loading="lazy" /></figure>
             <div class="card-body">
                 <h3 class="card-title">Pandemic</h3>
                 <p>COVID-19 is still around, while not only having a huge death toll, producing long-term sickness and restricting our way of life as well as affecting mental health.</p>
@@ -186,7 +186,7 @@
         </div>
 
         <div class="card w-96 bg-base-100 shadow-xl">
-            <figure><img src="/img/desert.jpg" class="max-h-[200px] w-full object-cover" alt="Dry tree in sand desert" /></figure>
+            <figure><img src="/img/desert.jpg" class="max-h-[200px] w-full object-cover" alt="Dry tree in sand desert" loading="lazy" /></figure>
             <div class="card-body">
                 <h3 class="card-title">Climate Change</h3>
                 <p>
@@ -198,7 +198,7 @@
         </div>
 
         <div class="card w-96 bg-base-100 shadow-xl">
-            <figure><img src="/img/beer.jpg" class="max-h-[200px] w-full object-cover" alt="Beer bottle" /></figure>
+            <figure><img src="/img/beer.jpg" class="max-h-[200px] w-full object-cover" alt="Beer bottle" loading="lazy" /></figure>
             <div class="card-body">
                 <h3 class="card-title">Peak Beer</h3>
                 <p>
@@ -209,7 +209,7 @@
         </div>
 
         <div class="card w-96 bg-base-100 shadow-xl">
-            <figure><img src="/img/plankton.jpg" class="max-h-[200px] w-full object-cover" alt="Maritime Life - plankton" /></figure>
+            <figure><img src="/img/plankton.jpg" class="max-h-[200px] w-full object-cover" alt="Maritime Life - plankton" loading="lazy" /></figure>
             <div class="card-body">
                 <h3 class="card-title">Killing Marine Life</h3>
                 <p>
@@ -222,7 +222,7 @@
         </div>
 
         <div class="card w-96 bg-base-100 shadow-xl">
-            <figure><img src="/img/drought.jpg" class="max-h-[200px] w-full object-cover" alt="Soil dried by drought" /></figure>
+            <figure><img src="/img/drought.jpg" class="max-h-[200px] w-full object-cover" alt="Soil dried by drought" loading="lazy" /></figure>
             <div class="card-body">
                 <h3 class="card-title">Drought</h3>
                 <p>
@@ -281,7 +281,7 @@
         <p class="mt-4 mb-4">In a nuclear war there will only be losers globally. Each and every one will lose.</p>
 
         <div class="block md:inline-block md:w-[30%] mb-4 md:mr-4">
-            <figure><img src="/img/nuclearbomb.png" class="max-h-[200px] w-auto block m-auto" alt="Nuclear bomb" /></figure>
+            <figure><img src="/img/nuclearbomb.png" class="max-h-[200px] w-auto block m-auto" alt="Nuclear bomb" loading="lazy" /></figure>
         </div>
         <div class="block md:inline-block md:w-2/3 md:align-top">
             <p class="mb-4">Their livelihood, their relatives, their friends and pretty much likely their lives.</p>
@@ -294,8 +294,8 @@
 
         <p class="mb-4 relative block">
             If you're interested in this topic and want to read a fictional story about it I can really recommend
-            <img class="affiliate-img absolute right-0" style="display: none" border="0" src="https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1529076935&Format=_SL110_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=awfaffiliate-21&language=de_DE" alt="Ken Follet Never book cover">
-            <a class="affiliate link" href="https://amzn.to/3NzZXrO" rel="sponsored nofollow">Ken Follet's latest book <q>Never</q> <span class="text-xs">(Affiliate link!)</span></a>.
+            <img class="affiliate absolute right-0" style="display: none" border="0" loading="lazy" src="https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1529076935&Format=_SL110_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=awfaffiliate-21&language=de_DE" alt="Ken Follet Never book cover">
+            <a class="affiliate link" href="https://amzn.to/3NzZXrO" rel="sponsored nofollow">Ken Follet's latest book <q>Never</q> <span class="text-xs affiliate text">(Affiliate link!)</span></a>.
             I've recently read this book and can very much recommend it.
         </p>
         <p class="mb-4 relative block">
@@ -308,7 +308,7 @@
                             <b class="btn btn-default">Consent</b>
                         </span>
                     </span>
-                    <img src="https://i.ytimg.com/vi_webp/M7hOpT0lPGI/sddefault.webp" alt="Just a youtube video preview" />
+                    <img src="https://i.ytimg.com/vi_webp/M7hOpT0lPGI/sddefault.webp" alt="Just a youtube video preview" loading="lazy" />
                 </span>
             </a>
         </p>
@@ -348,11 +348,11 @@
                 <span>
                     <span class="absolute flex p-8">
                         <span class="justify-center items-center bg-base-100 p-2 text-center">
-                            By clicking the preview you hereby consent to allow youtube's cookies and tracking functionality (consent will be saved for 1 week). <br>
+                            By clicking the preview you hereby consent to allow youtube's cookies and tracking functionality (consent will be saved for 1 week). <br><br>
                             <b class="btn btn-default">Consent</b>
                         </span>
                     </span>
-                    <img src="https://i.ytimg.com/vi_webp/3iknWWKZOUs/sddefault.webp" alt="Just a youtube video preview" />
+                    <img src="https://i.ytimg.com/vi_webp/3iknWWKZOUs/sddefault.webp" alt="Just a youtube video preview" loading="lazy" />
                 </span>
             </a>
         </p>
@@ -365,8 +365,8 @@
         </p>
 
         <p class="mb-4 block relative">
-            Although I don't agree with everything written in <img class="affiliate-img absolute right-0" style="display: none" border="0" src="https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=0241448301&Format=_SL110_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=awfaffiliate-21&language=de_DE" alt="Bill Gates book How to Avoid a Climate Disaster cover">
-            <a class="affiliate link" href="https://amzn.to/3usTVS2" rel="sponsored nofollow">Bill Gate's <q>How to Avoid a Climate Disaster</q> <span class="text-xs">(Affiliate link!)</span></a>, it's definitely worth a read if you're interested in this topic.
+            Although I don't agree with everything written in <img class="affiliate absolute right-0" style="display: none" border="0" loading="lazy" src="https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=0241448301&Format=_SL110_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=awfaffiliate-21&language=de_DE" alt="Bill Gates book How to Avoid a Climate Disaster cover">
+            <a class="affiliate link" href="https://amzn.to/3usTVS2" rel="sponsored nofollow">Bill Gate's <q>How to Avoid a Climate Disaster</q> <span class="text-xs affiliate text">(Affiliate link!)</span></a>, it's definitely worth a read if you're interested in this topic.
         </p>
 
         <p class="mb-4">
@@ -379,7 +379,8 @@
     <div class="footer p-10 pt-6">
         <div>
             <span class="footer-title">Contact</span>
-            <a class="link link-hover" href="impress.html">Impress</a>
+            <a class="link link-hover" href="https://twitter.com/bengthedev">Twitter</a>
+            <a class="link link-hover affiliate text" href="impress.html">Impress</a>
         </div>
         <div class="w-full">
             <span class="footer-title">Attribution</span>
@@ -388,7 +389,7 @@
     </div>
     <div class="footer-center md:pl-6 md:pr-6 pb-6 flex flex-col md:flex-row justify-center md:justify-between">
         <div>&copy; Benedikt Grande. All rights reserved.</div>
-        <div>
+        <div class="affiliate text">
             <a class="hover:text-neutral-200 link" href="/impress.html">Impress</a>
         </div>
     </div>
@@ -410,7 +411,7 @@
         return keyValue ? keyValue[2] : null;
     }
 
-    const affiliateLinks = document.getElementsByClassName('affiliate');
+    const affiliateLinks = document.querySelectorAll('.affiliate-on .affiliate.link');
 
     if (affiliateLinks && affiliateLinks.length > 0) {
         for (let i in affiliateLinks) {
