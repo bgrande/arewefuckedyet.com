@@ -38,6 +38,7 @@
             <p class="font-bold text-2xl mb-4">Are we fucked yet?</p>
             <button class="btn btn-primary disabled:text-slate-600" name="yes" id="vote_yes">Yes</button>
             <button class="btn btn-secondary disabled:text-slate-600" name="no" id="vote_no">No</button>
+            <p id="userpoll" class="text-xl mt-4" title="How the page's users think we're fucked">&nbsp;</p>
         </form>
     </div>
     <div class="hero">
@@ -140,11 +141,10 @@
                     <h1 class="text-6xl font-bold md:text-9xl" id="heading">
                         I honestly don't know
                     </h1>
-                    <p class="mt-12 mb-5 text-3xl md:text-4xl" id="subtext">
-                        There's <b>certainly</b> someone out there doing something <b>stupid</b>!
+                    <p class="mt-12 mb-5 text-3xl md:text-4xl">
+                        <span id="subtext">There's <b>certainly</b> someone out there doing something <b>stupid</b>!</span>
                     </p>
                     <p id="percentage" class="text-2xl mt-8" title="State of being fucked">&nbsp;</p>
-                    <p id="userpoll" class="text-2xl mt-8" title="How the page's users think we're fucked">&nbsp;</p>
                     <p class="mt-10">
                         <a class="btn btn-primary animate-bounce" href="#more" title="Read more">Read more!</a>
                     </p>
@@ -631,7 +631,7 @@
             const fuckedPercentage = Math.round((1 - (Number(jsonData.time) / (60 * 60))) * 100);
             const percentageElement = document.getElementById("percentage");
             const userPollElement = document.getElementById("userpoll");
-            percentageElement.innerHTML = '<span class="font-bold">' + fuckedPercentage + "%</span> progress";
+            percentageElement.innerHTML = '<span class="font-bold">' + fuckedPercentage + '%</span> progress according to <a class="link" href="https://thebulletin.org/doomsday-clock/">doomsday clock</a>';
 
             const yesno = await fetch('https://yesno.pagereply.com/arewefuckedyet.com/vote', {
                 method: "GET",
@@ -646,7 +646,7 @@
             const yesnoSum = yesno.yes + yesno.no;
             const fuckedFromQuestions = yesno.yes / yesnoSum;
 
-            userPollElement.innerHTML = '<span class="font-bold">' + Math.round(fuckedFromQuestions * 100) + "%</span> of users think we're fucked";
+            userPollElement.innerHTML = '<span class="font-bold">' + Math.round(fuckedFromQuestions * 100) + "%</span> of voters think we're fucked";
         }, 100);
 
 
