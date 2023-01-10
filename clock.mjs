@@ -5,11 +5,11 @@ import * as cheerio from "cheerio"
 import fs from "fs";
 
 const getDoomsDay = async () => {
-    const { body } = await got("https://thebulletin.org/doomsday-clock/")
+    const { body } = await got("https://thebulletin.org/doomsday-clock/current-time/")
 
     const $ = cheerio.load(body);
     const element = await $(".fl-heading-text").first();
-    const text = await element.text();
+    const text = await element.text().replace("\xa0", " ");
 
     const { groups: parsed } = text.match(/(?<sentence>.*: )?IT IS(?: STILL)? (?<time>\d+)(?: AND A (?<half>HALF))? (?<type>MINUTES|MINUTE|SECONDS|SECOND) TO MIDNIGHT/i)
     const seconds = parsed.type === "seconds" ? Number(parsed.time) : (Number(parsed.time) * 60) + (parsed.half ? 30 : 0)
@@ -17,7 +17,7 @@ const getDoomsDay = async () => {
     return {
         type: 'seconds',
         time: seconds,
-        sentence: parsed.sentence.replace(': ', '')
+        sentence: parsed.sentence?.replace(': ', '') ?? ""
     };
 };
 
