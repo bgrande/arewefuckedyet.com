@@ -8,16 +8,24 @@ const getDoomsDay = async () => {
     const { body } = await got("https://thebulletin.org/doomsday-clock/current-time/")
 
     const $ = cheerio.load(body);
-    const element = await $(".fl-heading-text").first();
-    const text = await element.text().replace("\xa0", " ");
+    const timeSentence = await $(".fl-rich-text h2").first();
+    const textTime = await timeSentence.text().replace("\xa0", " ");
+    let sentenceResult = '';
 
-    const { groups: parsed } = text.match(/(?<sentence>.*: )?IT IS(?: STILL)? (?<time>\d+)(?: AND A (?<half>HALF))? (?<type>MINUTES|MINUTE|SECONDS|SECOND) TO MIDNIGHT/i)
+    const { groups: parsed } = textTime.match(/(?<sentence>.*: )?IT IS(?: STILL)? (?<time>\d+)(?: AND A (?<half>HALF))? (?<type>MINUTES|MINUTE|SECONDS|SECOND) TO MIDNIGHT/i)
+
+    if (parsed.sentence) {
+        sentenceResult = parsed.sentence;
+    } else {
+        const sentence = await $("h2.fl-heading .fl-heading-text").last();
+        sentenceResult = await sentence.text().replace("\xa0", " ");
+    }
     const seconds = parsed.type === "seconds" ? Number(parsed.time) : (Number(parsed.time) * 60) + (parsed.half ? 30 : 0)
 
     return {
         type: 'seconds',
         time: seconds,
-        sentence: parsed.sentence?.replace(': ', '') ?? ""
+        sentence: sentenceResult.replace(': ', '').replace(':', '') ?? ''
     };
 };
 
