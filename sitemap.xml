@@ -3,5 +3,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://arewefuckedyet.com</loc>
+        <lastmod>2024-10-31T10:00:13+01:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
     </url>
 </urlset>
