@@ -3,7 +3,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://arewefuckedyet.com</loc>
-        <lastmod>2024-10-31T10:00:13+01:00</lastmod>
+        <lastmod>2024-11-25T10:00:13+01:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://arewefuckedyet.com/authors-take.html</loc>
+        <lastmod>2024-11-18T10:00:13+01:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://arewefuckedyet.com/maybe-not.html</loc>
+        <lastmod>2024-11-25T10:00:13+01:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
