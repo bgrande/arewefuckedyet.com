@@ -12,7 +12,7 @@ const getDoomsDay = async () => {
     const textTime = await timeSentence.text().replace("\xa0", " ");
     let sentenceResult = '';
 
-    const { groups: parsed } = textTime.match(/(?<sentence>.*: )?IT IS(?: STILL)? (?<time>\d+)(?: AND A (?<half>HALF))? (?<type>MINUTES|MINUTE|SECONDS|SECOND) TO MIDNIGHT/i)
+    const { groups: parsed } = textTime.match(/(?<sentence>.*: )?IT IS(?: STILL| NOW)? (?<time>\d+)(?: AND A (?<half>HALF))? (?<type>MINUTES|MINUTE|SECONDS|SECOND) TO MIDNIGHT/i)
 
     if (parsed.sentence) {
         sentenceResult = parsed.sentence;
@@ -29,4 +29,8 @@ const getDoomsDay = async () => {
     };
 };
 
-fs.writeFile('doomsday.json', await getDoomsDay().then((data) => JSON.stringify(data)), (err) => {console.log(err)});
+const parsedData = await getDoomsDay().then((data) => JSON.stringify(data));
+
+if (parsedData) {
+    fs.writeFile('doomsday.json', parsedData, (err) => console.log(err));
+}
