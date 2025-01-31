@@ -351,14 +351,26 @@
             return stateObjects['fallback'];
         }
 
+        let lastState = 1000;
         for (let state in stateObjects) {
             if (!stateObjects.hasOwnProperty(state) || stateObjects[state].threshold === null) {
                 continue;
             }
 
-            if (doomsday.time >= stateObjects[state].threshold) {
+            if (doomsday.time < stateObjects[state].threshold) {
+                lastState = state;
+                continue;
+            }
+
+            if (doomsday.time > stateObjects[state].threshold && doomsday.time <= stateObjects[lastState].threshold) {
+                return stateObjects[lastState];
+            } else if (doomsday.time <= stateObjects[state].threshold) {
                 return stateObjects[state];
             }
+        }
+
+        if (lastState < 1000) {
+            return stateObjects[lastState];
         }
 
         return stateObjects['fallback'];
@@ -378,6 +390,7 @@
 
     const setTextAndLayoutByClock = function setTextAndLayoutByClock (localJson, stateObjectList, headingElement, subTextElement, themeElement) {
         const stateObject = getStateObject(localJson, stateObjectList);
+        console.log(stateObject);
         const subText = getSubText(stateObject);
         const heading = getHeading(stateObject);
         const theme = getTheme(stateObject);
