@@ -13,7 +13,6 @@ node clock.mjs
 sleep 1
 
 # copy file to target
-ls -l .
 cp index.html doomsday.json impress.html authors-take.html maybe-not.html dist/
 cp -r img dist/
 cp .nojekyll dist/
