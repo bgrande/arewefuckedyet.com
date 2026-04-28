@@ -33,4 +33,6 @@ const parsedData = await getDoomsDay().then((data) => JSON.stringify(data));
 
 if (parsedData) {
     fs.writeFile('doomsday.json', parsedData, (err) => console.log(err));
+} else {
+    console.error('Error parsing data');
 }
