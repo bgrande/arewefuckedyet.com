@@ -35,7 +35,7 @@
     <link rel="preconnect" href="https://yesno.pagereply.com" />
 
     <script src="https://yesno.pagereply.com/arewefuckedyet.com/votejs" defer></script>
-    <script src="https://usagelog.pagereply.com/logjs/arewefuckedyet.com" defer></script>
+    <script src="https://usagelog.pagereply.com/logjs?source=arewefuckedyet.com" defer></script>
 </head>
 <body class="affiliate-off">
 <header class="min-h-screen lg:mb-12">
@@ -392,7 +392,7 @@
 
     const setTextAndLayoutByClock = function setTextAndLayoutByClock (localJson, stateObjectList, headingElement, subTextElement, themeElement) {
         const stateObject = getStateObject(localJson, stateObjectList);
-        console.log(stateObject);
+        //console.log(stateObject);
         const subText = getSubText(stateObject);
         const heading = getHeading(stateObject);
         const theme = getTheme(stateObject);
