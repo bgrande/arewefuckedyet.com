@@ -1,4 +1,6 @@
 #!/bin/bash
+source .env
+
 # copy file to target
 cp index.html doomsday.json impress.html authors-take.html maybe-not.html dist/
 cp -r img dist/
