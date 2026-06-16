@@ -9,9 +9,9 @@ cp favicon.ico favicon.svg icon.png tile.png tile-wide.png dist/
 cp sitemap.xml robots.txt site.webmanifest dist/
 
 # some adjustments if necessary
-sed -i ":a;N;\$!ba;s/$DEV_JSON_PATH/$JSON_PATH/g" dist/index.html
-sed -i ":a;N;\$!ba;s/$DEV_JSON_PATH/$JSON_PATH/g" dist/authors-take.html
-sed -i ":a;N;\$!ba;s/$DEV_JSON_PATH/$JSON_PATH/g" dist/maybe-not.html
+sed ":a;N;\$!ba;s/$DEV_JSON_PATH/$JSON_PATH/g" dist/index.html > dist/index.html
+sed ":a;N;\$!ba;s/$DEV_JSON_PATH/$JSON_PATH/g" dist/authors-take.html > dist/authors-take.html
+sed ":a;N;\$!ba;s/$DEV_JSON_PATH/$JSON_PATH/g" dist/maybe-not.html > dist/maybe-not.html
 #sed -i ":a;N;\$!ba;s/$DEV_LOG_PATH/$LOG_PATH/g" dist/index.html
 #cp -r service dist/
 #rm dist/service/composer*

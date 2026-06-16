@@ -9,7 +9,7 @@ sleep 1
 NODE_ENV=$APP_ENV npx tailwindcss --no-autoprefixer -o ./dist/tailwind.css --minify
 
 # create doomsday clock json
-node clock.mjs && echo 'Build finished!' && sleep 1 && test -f doomsday.json && ls -l && cat doomsday.json && exit 0
+node clock.mjs && echo 'Build finished!' && sleep 1 && test -f doomsday.json && exit 0
 
 echo Something went wrong...
 
