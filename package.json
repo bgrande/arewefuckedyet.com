@@ -24,6 +24,7 @@
   },
   "scripts": {
     "build": "./build.sh",
+    "deploy": "./deploy.sh",
     "dev": "npx tailwindcss -w -o tailwind.css"
   },
   "version": "0.1.0"
